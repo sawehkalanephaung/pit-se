@@ -1,0 +1,8 @@
+.git
+node_modules
+dist
+out
+**/.next
+**/build
+**/target
+.DS_Store

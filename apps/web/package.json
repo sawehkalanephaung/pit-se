@@ -1,0 +1,13 @@
+{
+  "name": "@pit-se/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "nx run web:dev",
+    "serve": "nx run web:serve",
+    "build": "nx run web:build",
+    "test": "nx run web:test",
+    "lint": "nx run web:lint",
+    "typecheck": "nx run web:typecheck"
+  }
+}
