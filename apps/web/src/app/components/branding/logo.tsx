@@ -15,7 +15,7 @@ export interface LogoProps extends ImgHTMLAttributes<HTMLImageElement> {
   variant?: LogoVariant;
 }
 
-export function Logo({ variant = 'mark', alt = 'PIT Logo', className, ...props }: LogoProps) {
+export function Logo({ variant = 'mark', alt = 'Logos', className, ...props }: LogoProps) {
   return (
     <img
       src={logoSources[variant]}

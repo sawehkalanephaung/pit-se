@@ -51,7 +51,7 @@ export function HeroBanner({
             <img
               src={imageUrl}
               alt={imageAlt}
-              className="relative z-10 w-full"
+              className="relative z-0 w-full"
               loading="lazy"
             />
           </div>
