@@ -22,4 +22,9 @@ describe('App', () => {
     renderApp();
     expect(screen.getByRole('link', { name: /donate/i })).toBeInTheDocument();
   });
+
+  it('renders the about section heading', () => {
+    renderApp();
+    expect(screen.getByRole('heading', { name: /we create free, high-quality stem simulations/i })).toBeInTheDocument();
+  });
 });
