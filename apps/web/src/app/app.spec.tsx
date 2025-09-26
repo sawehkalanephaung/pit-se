@@ -1,16 +1,25 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './app';
 
 describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<BrowserRouter><App /></BrowserRouter>);
-    expect(baseElement).toBeTruthy();
+  const renderApp = () =>
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+  it('renders the primary hero headline', () => {
+    renderApp();
+    expect(
+      screen.getByRole('heading', { name: /learn science by doing/i })
+    ).toBeInTheDocument();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getAllByText } = render(<BrowserRouter><App /></BrowserRouter>);
-    expect(getAllByText(new RegExp('Welcome @pit-se/web', 'gi')).length > 0).toBeTruthy();
+  it('renders the top navigation CTA', () => {
+    renderApp();
+    expect(screen.getByRole('link', { name: /donate/i })).toBeInTheDocument();
   });
 });
