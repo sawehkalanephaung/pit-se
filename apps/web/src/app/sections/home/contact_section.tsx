@@ -105,10 +105,10 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="border-t border-slate-100 bg-white"
+      className="bg-white border-t border-slate-100"
       aria-labelledby="contact-section-title"
     >
-      <div className="mx-auto w-full max-w-6xl px-6 py-16">
+      <div className="w-full max-w-6xl px-6 py-16 mx-auto">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div className="rounded-3xl bg-blue-50 px-8 py-10 shadow-[0_24px_48px_rgba(37,99,235,0.08)]">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
@@ -130,7 +130,7 @@ export function ContactSection() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-[0_12px_24px_rgba(37,99,235,0.12)]">
                     <svg
                       aria-hidden="true"
-                      className="h-6 w-6 text-blue-500"
+                      className="w-6 h-6 text-blue-500"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -138,12 +138,12 @@ export function ContactSection() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="text-sm font-semibold tracking-wide uppercase text-slate-500">
                       {detail.label}
                     </p>
                     <a
                       href={detail.href}
-                      className="mt-1 inline-flex text-base font-medium text-blue-600 hover:text-blue-700"
+                      className="inline-flex mt-1 text-base font-medium text-blue-600 hover:text-blue-700"
                     >
                       {detail.value}
                     </a>
@@ -160,10 +160,10 @@ export function ContactSection() {
                 role="status"
                 aria-live="polite"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <span className="flex items-center justify-center w-12 h-12 text-green-600 bg-green-100 rounded-full">
                   <svg
                     aria-hidden="true"
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -214,7 +214,7 @@ export function ContactSection() {
                 <div>
                   <Button
                     type="submit"
-                    className="rounded-2xl px-8 py-3 text-base"
+                    className="px-8 py-3 text-base rounded-2xl"
                     disabled={isLoading}
                   >
                     {isLoading ? 'Sending…' : 'Submit'}

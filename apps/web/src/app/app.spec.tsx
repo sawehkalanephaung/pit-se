@@ -74,4 +74,11 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
   });
+
+  it('renders the footer copyright notice', () => {
+    renderApp();
+    expect(
+      screen.getByText(/copyright/i)
+    ).toBeInTheDocument();
+  });
 });
