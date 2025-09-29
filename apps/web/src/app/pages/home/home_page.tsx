@@ -2,6 +2,7 @@ import HeroBanner from '../../sections/home/hero_banner';
 import WhoAreWe from '../../sections/home/who_are_we';
 import BrowseSimulations from '../../sections/home/browse_simulations';
 import OurTeam from '../../sections/home/our_team';
+import DonateSection from '../../sections/home/donate_section';
 
 import heroBannerImage from '../../../assets/photos/hero-banner.png';
 import whoWeAreImage from '../../../assets/photos/who-we-are.png';
@@ -29,6 +30,7 @@ export function HomePage() {
       />
       <BrowseSimulations />
       <OurTeam />
+      <DonateSection />
     </>
   );
 }

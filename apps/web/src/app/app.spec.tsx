@@ -56,4 +56,13 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
   });
+
+  it('renders the donate section heading', () => {
+    renderApp();
+    expect(
+      screen.getByRole('heading', {
+        name: /help us keep simulations free for learners everywhere\./i,
+      })
+    ).toBeInTheDocument();
+  });
 });
