@@ -65,4 +65,13 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
   });
+
+  it('renders the contact section heading', () => {
+    renderApp();
+    expect(
+      screen.getByRole('heading', {
+        name: /we would love to hear your feedback, questions, or ideas\./i,
+      })
+    ).toBeInTheDocument();
+  });
 });
