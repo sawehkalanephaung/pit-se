@@ -34,7 +34,9 @@ describe('App', () => {
 
   it('renders the browse simulations search input', () => {
     renderApp();
-    expect(screen.getByRole('searchbox', { name: /search simulations/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('searchbox', { name: /search simulations/i })
+    ).toBeInTheDocument();
   });
 
   it('filters simulations when searching', () => {
@@ -43,7 +45,15 @@ describe('App', () => {
 
     fireEvent.change(searchBox, { target: { value: 'Graphing' } });
 
-    // immediately after typing we should still see aria busy due to debounce/loading
     expect(searchBox).toHaveValue('Graphing');
+  });
+
+  it('renders the team section heading', () => {
+    renderApp();
+    expect(
+      screen.getByRole('heading', {
+        name: /meet the educators, developers, and partners who make this possible\./i,
+      })
+    ).toBeInTheDocument();
   });
 });
