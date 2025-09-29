@@ -1,77 +1,100 @@
-# PitSe
+# PIT STEM Explorer
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A modern single-page application built with Nx and React that showcases PIT's free, research-backed STEM simulations, community, and donation initiatives. The project emphasises modular UI composition, accessible components, and a design system implemented with Tailwind CSS.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Table of Contents
+- [Quick Start](#quick-start)
+- [Available Scripts](#available-scripts)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Conventions](#conventions)
+- [Troubleshooting](#troubleshooting)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Quick Start
 
-## Finish your CI setup
+### Prerequisites
+- **Node.js** v24.4.1 or newer
+- **pnpm** v9.x (preferred) — install with `npm install -g pnpm`
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/h7pCoq51io)
+### Clone & Install
+```bash
+# clone the repository
+git clone https://github.com/<your-org>/pit-se.git
+cd pit-se
 
-
-## Run tasks
-
-To run tasks with Nx use:
-
-```sh
-npx nx <target> <project-name>
+# install dependencies using pnpm
+pnpm install
 ```
 
-For example:
+### Run the App
+```bash
+# start the Vite dev server for the web app
+pnpm dev
+# or
+nx run web:dev
+```
+- The application is served at `http://localhost:4200` by default.
+- Hot Module Replacement (HMR) is enabled.
 
-```sh
-npx nx build myproject
+### Additional Commands
+```bash
+# run the unit test suite (Jest via Nx)
+pnpm test
+
+# perform static type checking
+pnpm typecheck
+
+# lint the project with ESLint and Nx
+pnpm lint
+
+# production build output (Vite)
+pnpm build
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+> **Note:** The Nx Jest target relies on the Vite test configuration. If the test runner cannot load `apps/web/vite.config.ts`, ensure the file exists and the path is correct before running `pnpm test`.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Tech Stack
 
-## Add new projects
+| Category             | Technology | Version |
+| ------------------- | ---------- | ------- |
+| Monorepo tooling     | [Nx](https://nx.dev) | 21.5.3 |
+| Language             | [TypeScript](https://www.typescriptlang.org/) | 5.9.x |
+| Package manager      | [pnpm](https://pnpm.io) | 9.0.0 |
+| Framework            | [React](https://react.dev) | 19.0.0 |
+| Router               | [React Router DOM](https://reactrouter.com) | 6.29.0 |
+| Bundler / Dev server | [Vite](https://vitejs.dev) | 7.x |
+| Styling              | [Tailwind CSS](https://tailwindcss.com) | 3.4.x |
+| Testing              | [Jest](https://jestjs.io) | 30.x |
+| UI Testing           | [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) | 16.1.0 |
+| E2E (optional)       | [Cypress](https://www.cypress.io) | 14.2.1 |
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## Project Structure
 
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+```
+apps/
+ ├─ web/                  # React SPA (Vite)
+ │   ├─ src/
+ │   │   ├─ app/          # Feature modules, routes, layouts
+ │   │   │   ├─ components # Reusable UI primitives
+ │   │   │   ├─ sections   # Page-level sections (Hero, Browse Simulations, etc.)
+ │   │   │   ├─ layouts    # Shared layout shells (MainLayout)
+ │   │   │   └─ pages      # Route-level page compositions (Home)
+ │   │   ├─ assets/       # Local images & illustrations
+ │   │   └─ main.tsx      # SPA entry point
+ │   └─ project.json      # Nx project configuration
+ └─ web-e2e/              # Cypress setup (optional)
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+## Conventions
+- **Component naming:** snake_case files for sections (e.g., `browse_simulations.tsx`), camelCase exports (e.g., `BrowseSimulations`).
+- **Styling:** Tailwind CSS utility classes with minimal custom CSS. Shared styles live in component props.
+- **Tests:** colocated in `*.spec.tsx` files using Testing Library and Jest.
+- **Assets:** Stored under `apps/web/src/assets/`, imported via Vite for bundling.
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+## Troubleshooting
+- **Tests fail to start:** Make sure `apps/web/vite.config.ts` can be imported by Nx Jest. Adjust the path or temporarily skip running `pnpm test` if the configuration is still being finalised.
+- **Port conflicts:** Vite defaults to port `4200`. Override via `pnpm dev -- --port=<number>`.
+- **Tailwind IntelliSense:** Install the Tailwind VSCode extension and ensure the workspace root contains `tailwind.config.js`.
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
+Maintained by the PIT engineering team. Contributions via feature branches and pull requests are encouraged.
