@@ -1,8 +1,9 @@
 import HeroBanner from '../../sections/home/hero_banner';
 import WhoAreWe from '../../sections/home/who_are_we';
+import BrowseSimulations from '../../sections/home/browse_simulations';
 
 import heroBannerImage from '../../../assets/photos/hero-banner.png';
-import whoWeAreImage from '../../../assets/photos/about-us.png';
+import whoWeAreImage from '../../../assets/photos/who-we-are.png';
 
 export function HomePage() {
   return (
@@ -25,6 +26,7 @@ export function HomePage() {
         imageAlt="Students collaborating around science experiments"
         ctaHref="#team"
       />
+      <BrowseSimulations />
     </>
   );
 }
