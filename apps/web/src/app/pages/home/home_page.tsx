@@ -6,7 +6,7 @@ import DonateSection from '../../sections/home/donate_section';
 import ContactSection from '../../sections/home/contact_section';
 
 import heroBannerImage from '../../../assets/photos/hero-banner.png';
-import whoWeAreImage from '../../../assets/photos/who-we-are.png';
+import whoWeAreImage from '../../../assets/photos/about-us.png';
 
 export function HomePage() {
   return (
