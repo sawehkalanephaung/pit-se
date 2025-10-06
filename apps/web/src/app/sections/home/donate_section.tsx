@@ -1,5 +1,5 @@
 import { FormEvent, useMemo, useState } from 'react';
-import donateIllustration from '../../../assets/photos/donate-illustration.svg';
+import donateImage from '../../../assets/photos/donate.png';
 import { defaultDonationAmounts } from '../../data/donations';
 import DonationAmountOption from '../../components/forms/donation_amount_option';
 import { Input } from '../../components/ui/input';
@@ -62,15 +62,15 @@ export function DonateSection() {
   return (
     <section
       id="donate"
-      className="border-t border-slate-100 bg-white"
+      className="bg-white border-t border-slate-100"
       aria-labelledby="donate-section-title"
     >
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-2 lg:items-center">
-        <div className="flex justify-center lg:justify-start">
+      <div className="grid w-full max-w-6xl gap-10 px-6 py-16 mx-auto lg:grid-cols-2 lg:items-center">
+        <div className="flex w-full h-full lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2">
           <img
-            src={donateIllustration}
+            src={donateImage}
             alt="Illustration of a hand holding a piggy bank"
-            className="w-full max-w-md"
+            className="object-cover w-full h-full shadow-lg rounded-2xl max-h-80 lg:max-h-full"
             loading="lazy"
           />
         </div>
@@ -93,7 +93,7 @@ export function DonateSection() {
           </div>
 
           <div
-            className="mt-8 grid gap-4 sm:grid-cols-2"
+            className="grid gap-4 mt-8 sm:grid-cols-2"
             role="group"
             aria-label="Choose a donation amount"
           >
@@ -124,7 +124,7 @@ export function DonateSection() {
 
           <div className="mt-8">
             <Button
-              className="w-full justify-center rounded-2xl px-8 py-3 text-base"
+              className="justify-center w-full px-8 py-3 text-base rounded-2xl"
               onClick={handleDonate}
             >
               Donate Now
