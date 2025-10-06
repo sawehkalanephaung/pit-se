@@ -12,23 +12,27 @@ export function TeamMemberCard({ member, muted = false }: TeamMemberCardProps) {
   return (
     <article
       className={classNames(
-        'flex h-full flex-col items-center justify-between rounded-3xl border bg-white px-8 py-10 text-center shadow-[0_8px_24px_rgba(15,23,42,0.05)] transition-transform duration-200',
-        'hover:-translate-y-1',
-        muted ? 'border-slate-200 text-slate-400' : 'border-slate-200 text-slate-700'
+        'group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-500',
+        'hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl',
+        muted ? 'opacity-70' : 'opacity-100'
       )}
       aria-label={`${name}, ${role}`}
     >
-      <img
-        src={imageUrl}
-        alt=""
-        className={classNames('mb-6 h-36 w-36 object-contain', muted ? 'opacity-50' : 'opacity-100')}
-        loading="lazy"
-      />
-      <div className="space-y-2">
-        <h3 className={classNames('text-lg font-semibold', muted ? 'text-slate-400' : 'text-slate-900')}>
-          {name}
-        </h3>
-        <p className="text-sm text-slate-500">{role}</p>
+      <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
+        <img
+          src={imageUrl}
+          alt=""
+          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+      <div className="flex flex-col flex-1 gap-4 px-5 py-5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-lg font-semibold text-slate-900">{name}</h3>
+        </div>
+        <p className="mt-auto text-sm text-slate-600">
+          {role.toLowerCase()}.
+        </p>
       </div>
     </article>
   );
